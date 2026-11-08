@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maison Ambrose · One scent. After dark.</title>
+<meta name="description" content="Maison Ambrose: one bold, unisex signature scent for the evening. Join the night list.">
+<meta property="og:title" content="Maison Ambrose · One scent. After dark.">
+<meta property="og:image" content="assets/ambrose_film_poster.jpg">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paars:#7453A2;      /* hoofdkleur, hsl(265,32%,48%) */
+    --paars-zacht:#62537A;
+    --indigo:#140D4F;     /* nachtindigo */
+    --nacht:#0B0830;
+    --amber:#E28413;
+    --rood:#DA2C38;
+    --creme:#FBF5F3;
+    --creme-70:rgba(251,245,243,.72);
+    --lijn:rgba(251,245,243,.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--nacht);color:var(--creme);font-family:"Space Grotesk",system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  img,video{display:block;max-width:100%;height:auto}
+  a{color:inherit}
+  .wrap{width:min(1160px,100% - 40px);margin-inline:auto}
+  .serif{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:400}
+  .eyebrow{font-size:.78rem;letter-spacing:.24em;text-transform:uppercase;color:var(--amber);font-weight:500}
+
+  /* nav */
+  header{position:absolute;inset:0 0 auto;z-index:5}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0}
+  .logo{display:block;line-height:0}
+  .logo img{height:88px;width:auto}
+  .foot-logo{height:110px;width:auto;opacity:.9;margin-bottom:18px}
+  .nav a.knop{font-size:.85rem}
+
+  .knop{display:inline-flex;align-items:center;gap:.5em;padding:.85em 1.5em;border-radius:999px;background:var(--amber);color:var(--nacht);font-weight:700;text-decoration:none;border:0;cursor:pointer;font:inherit;font-weight:700;transition:transform .2s,background .2s}
+  .knop:hover{transform:translateY(-2px);background:#f0952a}
+  .knop.lijn{background:transparent;color:var(--creme);border:1px solid var(--lijn)}
+  .knop.lijn:hover{border-color:var(--creme)}
+
+  /* hero */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;
+    background:radial-gradient(60% 70% at 75% 40%,rgba(116,83,162,.55),transparent 70%),
+               radial-gradient(40% 50% at 10% 90%,rgba(226,132,19,.18),transparent 70%),
+               linear-gradient(180deg,var(--indigo),var(--nacht))}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;padding:150px 0 80px}
+  .hero h1{font-size:clamp(2.8rem,6.4vw,5.6rem);line-height:.98;font-weight:700;letter-spacing:-.02em;margin:.35em 0 .3em}
+  .hero h1 em{display:block;font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:400;color:var(--amber);letter-spacing:0}
+  .hero p.lead{font-size:1.12rem;color:var(--creme-70);max-width:34ch}
+  .hero .acties{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+  .film{position:relative;justify-self:center;width:min(360px,100%);aspect-ratio:9/16;border-radius:22px;overflow:hidden;
+    box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px var(--lijn),0 0 120px rgba(116,83,162,.45)}
+  .film video{width:100%;height:100%!important;object-fit:cover}
+  .film figcaption{position:absolute;left:14px;bottom:12px;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--creme-70)}
+
+  section{padding:110px 0}
+  h2{font-size:clamp(2rem,4vw,3.2rem);line-height:1.05;letter-spacing:-.015em;font-weight:700;margin:.4em 0 .5em}
+  h2 em{font-family:"Cormorant Garamond",serif;font-weight:400;color:var(--amber)}
+
+  /* verhaal */
+  .verhaal{background:linear-gradient(180deg,var(--nacht),var(--indigo))}
+  .verhaal-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  .verhaal-beeld{border-radius:18px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  .verhaal p{color:var(--creme-70);margin-bottom:1em;max-width:52ch}
+  .pijlers{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+  .pijlers li{border-top:1px solid var(--lijn);padding-top:14px;font-size:.92rem;color:var(--creme-70)}
+  .pijlers b{display:block;color:var(--creme);font-size:1rem;margin-bottom:2px}
+
+  /* geuren */
+  .geuren{background:var(--indigo)}
+  .geuren-kop{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+  .geuren-kop p{color:var(--creme-70);max-width:42ch}
+  .kaarten{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .kaart{background:rgba(251,245,243,.04);border:1px solid var(--lijn);border-radius:16px;overflow:hidden;transition:transform .3s,border-color .3s}
+  .kaart:hover{transform:translateY(-6px);border-color:var(--accent,var(--paars))}
+  .kaart img{aspect-ratio:1;object-fit:cover;width:100%}
+  .kaart div{padding:18px 18px 22px}
+  .kaart h3{font-size:1.15rem;letter-spacing:.12em;text-transform:uppercase}
+  .kaart h3::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--accent);margin-right:10px;vertical-align:middle}
+  .kaart p{font-size:1.15rem;color:var(--creme-70);margin-top:4px}
+
+  /* cta */
+  .cta{position:relative;overflow:hidden;background:
+      linear-gradient(90deg,rgba(11,8,48,.96) 0%,rgba(11,8,48,.85) 45%,rgba(11,8,48,.35) 100%),
+      url("assets/skyline.jpg") right center/cover no-repeat}
+  .cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .cta p{color:var(--creme-70);max-width:44ch}
+  form{background:rgba(20,13,79,.72);backdrop-filter:blur(8px);border:1px solid var(--lijn);border-radius:20px;padding:32px;display:grid;gap:16px}
+  label{font-size:.82rem;letter-spacing:.06em;color:var(--creme-70)}
+  input[type=text],input[type=email]{width:100%;margin-top:6px;padding:.9em 1em;border-radius:10px;border:1px solid var(--lijn);background:rgba(11,8,48,.6);color:var(--creme);font:inherit}
+  input:focus{outline:2px solid var(--amber);outline-offset:1px}
+  .optin{display:flex;gap:10px;align-items:flex-start;font-size:.85rem;line-height:1.45;letter-spacing:0}
+  .optin input{margin-top:3px;width:18px;height:18px;accent-color:var(--amber);flex:none}
+  .klein{font-size:.75rem;color:var(--creme-70)}
+  .bedankt{display:none;text-align:center;padding:24px 0}
+  .bedankt.toon{display:block}
+  .fout{color:#ff8a8a}
+
+  footer{background:var(--nacht);border-top:1px solid var(--lijn);padding:36px 0;font-size:.8rem;color:var(--creme-70)}
+  .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
+  .reveal.zichtbaar{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}html{scroll-behavior:auto}}
+
+  @media (max-width:900px){
+    .hero-grid,.verhaal-grid,.cta-grid{grid-template-columns:1fr}
+    .hero-grid{padding-top:110px;gap:40px}
+    .film{width:min(300px,80%)}
+    .kaarten{grid-template-columns:repeat(2,1fr)}
+    section{padding:80px 0}
+  }
+  @media (max-width:520px){
+    .wrap{width:calc(100% - 32px)}
+    .kaarten{grid-template-columns:1fr 1fr;gap:12px}
+    .kaart div{padding:12px 12px 16px}
+    .kaart h3{font-size:.9rem}
+    .kaart p{font-size:1rem}
+    .pijlers{grid-template-columns:1fr}
+    form{padding:22px}
+    .nav a.knop{display:none}
+    .logo img{height:72px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top"><img src="assets/logo-wit.png" alt="Maison Ambrose" width="315" height="400"></a>
+    <a class="knop lijn" href="#signup">Join the night list</a>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="reveal">
+        <span class="eyebrow">Eau de parfum · unisex</span>
+        <h1>One scent.<em>After dark.</em></h1>
+        <p class="lead">A bold, unisex signature for the hours when the day lets go. Not a wardrobe of fragrances. Just one that is unmistakably yours.</p>
+        <div class="acties">
+          <a class="knop" href="#signup">Join the night list</a>
+          <a class="knop lijn" href="#scents">Discover the scents</a>
+        </div>
+      </div>
+      <figure class="film reveal">
+        <video src="assets/ambrose_film.mp4" poster="assets/ambrose_film_poster.jpg" autoplay muted loop playsinline aria-label="Maison Ambrose campaign film: an art deco rooftop at night"></video>
+        <figcaption>Golden hour, bottled.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- VERHAAL -->
+  <section class="verhaal" id="story">
+    <div class="wrap verhaal-grid">
+      <div class="verhaal-beeld reveal"><img src="assets/collectie.jpg" alt="The four Maison Ambrose scents side by side: Iris, Sage, Noir and Amber" loading="lazy" width="1200" height="1200"></div>
+      <div class="reveal">
+        <span class="eyebrow">Our story</span>
+        <h2>Less choosing. <em>More you.</em></h2>
+        <p>Maison Ambrose started with one question: why own ten perfumes when one can say everything? We make a single signature scent for the evening, warm and sensual, built around amber and made to stay close to your skin.</p>
+        <p>No labels, no rules about who should wear it. Just one bottle that becomes part of how you end the day: the dinner that runs late, the city lights, the last conversation of the night.</p>
+        <ul class="pijlers">
+          <li><b>One scent</b>Your signature, not a collection.</li>
+          <li><b>The evening</b>Made for dusk until long after midnight.</li>
+          <li><b>Unisex</b>Shared, borrowed, never labelled.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- GEUREN -->
+  <section class="geuren" id="scents">
+    <div class="wrap">
+      <div class="geuren-kop reveal">
+        <div><span class="eyebrow">Four moods, one house</span><h2>Find your <em>after dark.</em></h2></div>
+        <p>Every Maison Ambrose eau de parfum shares the same sculpted bottle and the same idea: one scent that carries you through the night.</p>
+      </div>
+      <div class="kaarten">
+        <article class="kaart reveal" style="--accent:var(--paars)"><img src="assets/iris.jpg" alt="Maison Ambrose Iris, violet perfume" loading="lazy" width="1024" height="1024"><div><h3>Iris</h3><p class="serif">Soft iris, after dark.</p></div></article>
+        <article class="kaart reveal" style="--accent:#5b5670"><img src="assets/noir.jpg" alt="Maison Ambrose Noir, black perfume" loading="lazy" width="1024" height="1024"><div><h3>Noir</h3><p class="serif">Black oud, past midnight.</p></div></article>
+        <article class="kaart reveal" style="--accent:var(--amber)"><img src="assets/amber.jpg" alt="Maison Ambrose Amber, golden perfume" loading="lazy" width="1024" height="1024"><div><h3>Amber</h3><p class="serif">Warm amber, slow burn.</p></div></article>
+        <article class="kaart reveal" style="--accent:#b8bd8a"><img src="assets/sage.jpg" alt="Maison Ambrose Sage, pale green perfume" loading="lazy" width="1024" height="1024"><div><h3>Sage</h3><p class="serif">Green sage, cool night air.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA + FORMULIER -->
+  <section class="cta" id="signup">
+    <div class="wrap cta-grid">
+      <div class="reveal">
+        <span class="eyebrow">The night list</span>
+        <h2>Be the first to <em>wear it.</em></h2>
+        <p>Join the Maison Ambrose night list for the launch date, the story behind the scent and an invitation to find your own after dark.</p>
+      </div>
+
+      <div class="reveal">
+        <!-- MAILERLITE: eigen formulier in huisstijl, gekoppeld aan MailerLite-form 203580669380527733
+             (account 2749389). Velden: fields[name], fields[email] + verplichte opt-in (niet vooraf aangevinkt). -->
+        <form id="signup-form" action="https://assets.mailerlite.com/jsonp/2749389/forms/203580669380527733/subscribe" method="post" novalidate>
+          <div><label for="naam">First name</label><input id="naam" name="fields[name]" type="text" autocomplete="given-name" required></div>
+          <div><label for="email">Email address</label><input id="email" name="fields[email]" type="email" autocomplete="email" required></div>
+          <label class="optin"><input type="checkbox" name="gdpr" required> <span>Yes, I'd like to receive emails from Maison Ambrose. I can unsubscribe at any time.</span></label>
+          <input type="hidden" name="ml-submit" value="1">
+          <input type="hidden" name="anticsrf" value="true">
+          <button class="knop" type="submit">Join the night list</button>
+          <p class="klein fout" id="fout" role="alert" hidden>Something went wrong. Please try again in a moment.</p>
+          <p class="klein">We use your name and email only for these emails. Read our <a href="#privacy">privacy statement</a>.</p>
+        </form>
+        <div class="bedankt" id="bedankt" role="status"><h2>Welcome to <em>the night.</em></h2><p>Check your inbox to confirm your subscription.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="privacy">
+  <div class="wrap">
+    <img class="foot-logo" src="assets/logo-wit.png" alt="Maison Ambrose" width="315" height="400" loading="lazy">
+  </div>
+  <div class="wrap foot">
+    <span>© 2026 Maison Ambrose · a fictional brand created for a student project (Creative Automation, Arteveldehogeschool).</span>
+    <span>Visuals: product photos + Adobe Firefly · Copy &amp; code: Claude · Personal data is fictional and only used for testing.</span>
+  </div>
+</footer>
+
+<script>
+  // fade-in bij scrollen
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('zichtbaar'); io.unobserve(e.target); } }), { threshold: .15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // aanmelding versturen naar MailerLite, zonder de pagina te verlaten
+  const form = document.getElementById('signup-form');
+  const fout = document.getElementById('fout');
+  const knop = form.querySelector('button[type=submit]');
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    knop.disabled = true; knop.textContent = 'Sending…'; fout.hidden = true;
+    const data = new FormData(form);
+    data.delete('gdpr'); // opt-in wordt hier gecontroleerd, MailerLite verwacht dit veld niet
+    try {
+      let ok = true;
+      try {
+        const r = await fetch(form.action, { method: 'POST', body: data });
+        const j = await r.json().catch(() => ({}));
+        ok = r.ok && j.success !== false;
+      } catch (_) {
+        // sommige browsers blokkeren het antwoord (CORS): dan toch versturen zonder antwoord te lezen
+        await fetch(form.action, { method: 'POST', body: data, mode: 'no-cors' });
+      }
+      if (!ok) throw new Error('mailerlite');
+      form.style.display = 'none';
+      document.getElementById('bedankt').classList.add('toon');
+    } catch (_) {
+      fout.hidden = false; knop.disabled = false; knop.textContent = 'Join the night list';
+    }
+  });
+
+  // telt formulierweergaven in MailerLite (statistiek)
+  fetch('https://assets.mailerlite.com/jsonp/2749389/forms/203580669380527733/takel').catch(() => {});
+</script>
+</body>
+</html>
