@@ -1,4 +1,4 @@
-# Landingspagina – Maison Ambrose
+ # Landingspagina – Maison Ambrose
 
 Statische one-page site (HTML + CSS + een beetje JS), gebouwd met Claude ("vibe coded"), klaar voor GitHub Pages.
 
