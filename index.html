@@ -205,7 +205,7 @@
       <div class="reveal">
         <!-- MAILERLITE: eigen formulier in huisstijl, gekoppeld aan MailerLite-form 203580669380527733
              (account 2749389). Velden: fields[name], fields[email] + verplichte opt-in (niet vooraf aangevinkt). -->
-        <form id="signup-form" action="https://assets.mailerlite.com/jsonp/2749389/forms/203580669380527733/subscribe" method="post" novalidate>
+        <form id="signup-form" data-versie="3" action="https://assets.mailerlite.com/jsonp/2749389/forms/203580669380527733/subscribe" method="post" novalidate>
           <div><label for="naam">First name</label><input id="naam" name="fields[name]" type="text" autocomplete="given-name" required></div>
           <div><label for="email">Email address</label><input id="email" name="fields[email]" type="email" autocomplete="email" required></div>
           <label class="optin"><input type="checkbox" name="gdpr" required> <span>Yes, I'd like to receive emails from Maison Ambrose. I can unsubscribe at any time.</span></label>
@@ -242,7 +242,11 @@
   const knop = form.querySelector('button[type=submit]');
   form.addEventListener('submit', async e => {
     e.preventDefault();
-    if (!form.checkValidity()) { form.reportValidity(); return; }
+    // eigen, duidelijk zichtbare melding als iets ontbreekt (Safari toont de standaardmelding nauwelijks)
+    const leeg = !document.getElementById('naam').value.trim() ? 'Please fill in your first name.'
+      : !document.getElementById('email').validity.valid ? 'Please fill in a valid email address.'
+      : !form.querySelector('[name=gdpr]').checked ? 'Please tick the box to agree to receive our emails.' : '';
+    if (leeg) { fout.textContent = leeg; fout.hidden = false; return; }
     knop.disabled = true; knop.textContent = 'Sending…'; fout.hidden = true;
     const data = new FormData(form);
     data.delete('gdpr'); // opt-in wordt hier gecontroleerd, MailerLite verwacht dit veld niet
@@ -258,6 +262,7 @@
       bedankt.classList.add('toon');
       bedankt.scrollIntoView({ behavior: 'smooth', block: 'center' });
     } catch (_) {
+      fout.textContent = 'Something went wrong. Please try again in a moment.';
       fout.hidden = false; knop.disabled = false; knop.textContent = 'Join the night list';
     }
   });
