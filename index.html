@@ -247,18 +247,16 @@
     const data = new FormData(form);
     data.delete('gdpr'); // opt-in wordt hier gecontroleerd, MailerLite verwacht dit veld niet
     try {
-      let ok = true;
-      try {
-        const r = await fetch(form.action, { method: 'POST', body: data });
-        const j = await r.json().catch(() => ({}));
-        ok = r.ok && j.success !== false;
-      } catch (_) {
-        // sommige browsers blokkeren het antwoord (CORS): dan toch versturen zonder antwoord te lezen
-        await fetch(form.action, { method: 'POST', body: data, mode: 'no-cors' });
-      }
-      if (!ok) throw new Error('mailerlite');
+      // MailerLite stuurt geen leesbaar antwoord naar andere websites terug (CORS),
+      // dus we versturen "blind" en tonen de bedankt-melding zodra het verzoek vertrokken is.
+      await Promise.race([
+        fetch(form.action, { method: 'POST', body: data, mode: 'no-cors' }),
+        new Promise(res => setTimeout(res, 6000))
+      ]);
       form.style.display = 'none';
-      document.getElementById('bedankt').classList.add('toon');
+      const bedankt = document.getElementById('bedankt');
+      bedankt.classList.add('toon');
+      bedankt.scrollIntoView({ behavior: 'smooth', block: 'center' });
     } catch (_) {
       fout.hidden = false; knop.disabled = false; knop.textContent = 'Join the night list';
     }
